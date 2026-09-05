@@ -24,7 +24,6 @@ The main goals of Digital Dukaan are to:
 
 ### 🔄 Core Business Workflow
 Digital Dukaan connects the major business operations into a single workflow:
-**Products → Purchases → Inventory → Sales → Payments → Customers/Suppliers → Expenses & Returns → Reports**
 Changes made through transactions can affect related business information automatically. For example, purchasing products increases inventory, while selling products decreases available stock.
 
 ### 💡 Design Philosophy
