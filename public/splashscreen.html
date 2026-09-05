@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Dukaan - Loading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #f67315;
+            --brand-dark: #ea580c;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f0f3f5 100%);
+            
+            /* Changed to Flex Column Layout to prevent overlapping */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .splash-container {
+            /* flex: 1 tells this container to take up all available vertical space, pushing the footer down */
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .splash-container > img:not(.logo img) {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .logo {
+            width: 88px;
+            height: 88px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            overflow: hidden; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 20px 40px -10px rgba(249, 115, 22, 0.4),
+                0 10px 20px -5px rgba(249, 115, 22, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.15);
+            animation: logo-float 4s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: skewX(-25deg);
+            animation: logo-shine 4s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+            position: relative;
+            z-index: 3;
+        }
+
+        .pulse-ring, .pulse-ring::after {
+            position: absolute;
+            inset: 8px;
+            border-radius: 26px;
+            background: transparent;
+            box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            animation: ring-pulse 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+            z-index: 1;
+        }
+
+        .pulse-ring::after {
+            content: '';
+            animation-delay: 1.5s;
+        }
+
+        .text-content {
+            opacity: 0;
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .app-name {
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #000000 0%, #374151 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.04em;
+            margin-bottom: 8px;
+        }
+
+        .app-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em; 
+            margin-bottom: 36px;
+        }
+
+        .loading-wrapper {
+            opacity: 0;
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+
+        .progress-container {
+            width: 240px;
+            height: 2px;
+            background: rgba(17, 24, 39, 0.06);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, var(--brand-primary) 30%, var(--brand-dark) 50%, var(--brand-primary) 70%, transparent 100%);
+            background-size: 200% 100%;
+            border-radius: 4px;
+            animation: progress-shimmer 1.5s linear infinite;
+        }
+
+        .loading-text {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 16px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            animation: pulse-opacity 2s ease-in-out infinite;
+        }
+
+        /* --- Updated Footer Info Styles --- */
+        .footer-info {
+            /* Removed absolute positioning */
+            padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+            z-index: 10;
+        }
+
+
+        .version-text {
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes fade-up {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes logo-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes logo-shine {
+            0%, 20% { left: -150%; }
+            80%, 100% { left: 150%; }
+        }
+
+        @keyframes ring-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+            70% { box-shadow: 0 0 0 35px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 50px rgba(249, 115, 22, 0); }
+        }
+
+        @keyframes progress-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+        <div class="logo-wrapper">
+            <div class="pulse-ring"></div>
+            <div class="logo">
+                <!-- Keep your actual paths here -->
+                <img src="./images/shop_Logo.png" alt="Icon">
+            </div>
+        </div>
+
+        <img src="./images/main_logo.png" alt="Digital Dukaan Logo">
+
+        <div class="text-content">
+            <h1 class="app-name">Digital Dukaan</h1>
+            <p class="app-subtitle">Complete Business Management</p>
+        </div>
+
+        <div class="loading-wrapper">
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p class="loading-text">Preparing your workspace...</p>
+        </div>
+    </div>
+
+    <!-- Footer now sits naturally at the bottom -->
+    <div class="footer-info">
+        <div class="version-text">v1.0.0</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+# ============================================================
+# DIGITAL DUKAAN - GITIGNORE
+# React + Vite + Tauri + Rust
+# ============================================================
+
+
+# ============================================================
+# DEPENDENCIES
+# ============================================================
+
+node_modules/
+.pnp/
+.pnp.js
+
+# npm
+.npm/
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-store/
+
+
+# ============================================================
+# BUILD / DISTRIBUTION
+# ============================================================
+
+dist/
+dist-ssr/
+build/
+out/
+release/
+
+*.local
+
+# Vite
+.vite/
+
+
+# ============================================================
+# TAURI
+# ============================================================
+
+# Rust/Tauri build directory
+src-tauri/target/
+
+# Tauri generated bundles/installers
+src-tauri/gen/
+
+# Tauri local build artifacts
+src-tauri/.tauri/
+
+
+# ============================================================
+# RUST
+# ============================================================
+
+target/
+
+# Rust incremental compilation
+**/*.rs.bk
+
+# Rust documentation generated locally
+/doc/
+
+
+# ============================================================
+# LOGS
+# ============================================================
+
+logs/
+*.log
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+debug.log*
+error.log*
+
+
+# ============================================================
+# ENVIRONMENT / SECRETS
+# ============================================================
+
+.env
+.env.*
+!.env.example
+!.env.sample
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Local secrets
+secrets/
+.secret/
+credentials/
+credentials.json
+
+
+# ============================================================
+# DATABASE / LOCAL DATA
+# ============================================================
+
+# Local SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+
+# SQLite temporary files
+*.db-shm
+*.db-wal
+*.db-journal
+
+# Local database backups
+backups/
+backup/
+*.backup
+*.bak
+
+# IMPORTANT:
+# Keep database migration/source files tracked.
+# Only local database DATA is ignored.
+
+
+# ============================================================
+# GENERATED APPLICATION DATA
+# ============================================================
+
+# Local exports
+exports/
+
+# Generated reports
+reports/
+
+# Generated receipts
+receipts/
+
+# Temporary uploaded/generated files
+temp/
+tmp/
+uploads/
+
+
+# ============================================================
+# TEST / COVERAGE
+# ============================================================
+
+coverage/
+.nyc_output/
+*.lcov
+
+
+# ============================================================
+# CACHE
+# ============================================================
+
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.vite/
+.turbo/
+.next/
+.nuxt/
+
+*.tsbuildinfo
+
+
+# ============================================================
+# IDE / EDITORS
+# ============================================================
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+# JetBrains
+.idea/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio project files
+*.njsproj
+*.ntvs*
+*.vs/
+
+# Swap / temporary editor files
+*.swp
+*.swo
+*.swn
+*~
+.#*
+
+# Vim
+[._]*.s[a-v][a-z]
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+
+# ============================================================
+# OPERATING SYSTEM
+# ============================================================
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+
+Desktop.ini
+
+
+# ============================================================
+# WINDOWS
+# ============================================================
+
+$RECYCLE.BIN/
+*.lnk
+
+
+# ============================================================
+# MACOS
+# ============================================================
+
+.AppleDouble
+.LSOverride
+
+
+# ============================================================
+# LINUX
+# ============================================================
+
+*~
+.directory
+
+
+# ============================================================
+# TYPESCRIPT / JAVASCRIPT TEMP FILES
+# ============================================================
+
+*.tmp
+*.temp
+
+
+# ============================================================
+# PACKAGE MANAGER LOCK FILES
+# ============================================================
+
+# DO NOT ignore package-lock.json / yarn.lock / pnpm-lock.yaml.
+# Lock files SHOULD normally be committed.
+
+
+# ============================================================
+# GENERATED DOCUMENTS / FILES
+# ============================================================
+
+*.generated
+*.generated.*
+
+# Local generated PDFs
+*.generated.pdf
+
+
+# ============================================================
+# SECURITY / CERTIFICATES
+# ============================================================
+
+*.pem
+*.key
+*.key.pem
+*.csr
+
+# Allow example certificates if needed
+!*.example.pem
+!*.example.key
+
+
+# ============================================================
+# LOCAL CONFIGURATION
+# ============================================================
+
+config.local.*
+settings.local.*
+*.local.json
+
+
+# ============================================================
+# TEMPORARY PATCH / BACKUP FILES
+# ============================================================
+
+*.orig
+*.rej
+*.patch~
+
+*.old
+*.backup
+
+
+# ============================================================
+# OS / ARCHIVE TEMP FILES
+# ============================================================
+
+*.zip.tmp
+*.tar.tmp
+*.gz.tmp
